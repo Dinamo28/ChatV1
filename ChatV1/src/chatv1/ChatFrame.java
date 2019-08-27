@@ -5,6 +5,7 @@
  */
 package chatv1;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -14,11 +15,14 @@ import javax.swing.JLabel;
  */
 public class ChatFrame extends javax.swing.JFrame {
     static String log= "";
+    static ImageIcon BG = new ImageIcon("D:\\ChatV1\\ChatV1\\src\\resources\\MineBackground.jpg");
+    Color c=new Color(0f,0f,0f,1f);
     public ChatFrame() {
         initComponents();
-        int h = 600;
-        int w = 340;
-        BGL.setIcon(new ImageIcon("D:\ChatV1\ChatV1\src\resources\MineBackground.jpg"));
+        JLabel BackGround= new JLabel();
+        BackGround.setBounds(0, 0, 700, 400);
+        BackGround.setIcon(BG);
+        jScrollPane1.add(BackGround);
     }
 
     /**
@@ -33,10 +37,11 @@ public class ChatFrame extends javax.swing.JFrame {
         InputTF = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         LogTA = new javax.swing.JTextArea();
-        BGL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(599, 337));
 
+        InputTF.setBackground(null);
         InputTF.setText("Di aglo");
         InputTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,7 +50,9 @@ public class ChatFrame extends javax.swing.JFrame {
         });
 
         LogTA.setEditable(false);
+        LogTA.setBackground(null);
         LogTA.setColumns(20);
+        LogTA.setForeground(null);
         LogTA.setRows(5);
         jScrollPane1.setViewportView(LogTA);
 
@@ -54,26 +61,20 @@ public class ChatFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(BGL, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                     .addComponent(InputTF))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BGL, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(InputTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -123,7 +124,6 @@ public class ChatFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BGL;
     private javax.swing.JTextField InputTF;
     private javax.swing.JTextArea LogTA;
     private javax.swing.JScrollPane jScrollPane1;
