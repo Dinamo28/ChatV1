@@ -3,9 +3,9 @@ public class User {
     String username,password,alias;
     Ventana in;
     public User(String username,String password,String alias){
-        this.alias=alias;
+        this.alias = alias;
         this.password = password;
-        this.username=username;
+        this.username = username;
     }
     public String ChangeAlias(){
         
@@ -16,7 +16,7 @@ public class User {
         return username;
     }
     public String GetPassword(){
-        password = in.passTF.getText();
+        password = in.passField.getText();
         return password;
     }
     public String GetAlias(){

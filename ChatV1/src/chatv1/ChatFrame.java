@@ -41,7 +41,6 @@ public class ChatFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(599, 337));
 
-        InputTF.setBackground(null);
         InputTF.setText("Di aglo");
         InputTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,9 +49,7 @@ public class ChatFrame extends javax.swing.JFrame {
         });
 
         LogTA.setEditable(false);
-        LogTA.setBackground(null);
         LogTA.setColumns(20);
-        LogTA.setForeground(null);
         LogTA.setRows(5);
         jScrollPane1.setViewportView(LogTA);
 
