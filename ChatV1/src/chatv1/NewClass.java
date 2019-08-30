@@ -14,7 +14,7 @@ public class NewClass {
         PrintWriter linea;
         try {
             String ruta = "C:\\Users\\Public\\usuarios.txt";
-            String contenido = username + "\n" + alias + "\n" + contraseña;
+            String contenido = alias + "\n" + username + "\n" + contraseña;
             Archivo = new File(ruta);
             // Si el archivo no existe es creado
             if (!Archivo.exists()) {
@@ -66,14 +66,14 @@ public class NewClass {
             String cadena;
             int i = 1;
             while ((cadena = br.readLine()) != null) {
-                if (i%5 == 0) {
+                if (i%2 == 0) {
                     tempcorreo = cadena;
                 }
-                if (i%6 == 0) {
+                if (i%3 == 0) {
                     tempcontraseña = cadena;
                 }
                 i = i+1;
-                if (i == 7) {
+                if (i == 4) {
                     if (username.equals(tempcorreo) && contraseña.equals(tempcontraseña)) {
                         resultado = true;
                         break;
