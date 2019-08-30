@@ -6,6 +6,7 @@
 package chatv1;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,26 +20,27 @@ import javax.swing.JTextArea;
  */
 public class ChatFrame extends javax.swing.JFrame {
 
-    static String log = "";
+    static String log = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     static Random rng = new Random();
-    static ImageIcon BG = new ImageIcon("F:\\ChatV1\\ChatV1\\src\\resources\\ChatBG"+(rng.nextInt(4)+1)+".png");
+    static ImageIcon BG = new ImageIcon("D:\\ChatV1\\ChatV1\\src\\resources\\chat"+rng.nextInt(10)+".jpg");
     static Color b = new Color(0f, 0f, 0f, 0f);
-    static Color c = new Color(0f, 0f, 0f, .1f);
+    static Color c = new Color(1f, 1f, 1f, .4f);
+    
 //    static JTextArea logTA = new JTextArea();
     static JLabel bg = new JLabel();
 
     public ChatFrame() {
         initComponents();
+//        logTA.set
         logTA.setBackground(c);
-        logTA.setForeground(null);//ScrollPane,ViewPort,Content
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setBackground(b);
-        jScrollPane1.setBorder(null);
-        jScrollPane1.getViewport().setBorder(null);
-        
-        
+        logTA.setOpaque(true);
+        scrP.setBackground(c);
+        bg.setIcon(BG);
         this.add(bg);
-        bg.setVisible(true);
+//        
+//        
+//        this.add(bg);
+//        bg.setVisible(true);
 
     }
 
@@ -52,11 +54,10 @@ public class ChatFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         InputTF = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrP = new javax.swing.JScrollPane();
         logTA = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 405));
 
         InputTF.setText("Di aglo");
         InputTF.addActionListener(new java.awt.event.ActionListener() {
@@ -65,30 +66,35 @@ public class ChatFrame extends javax.swing.JFrame {
             }
         });
 
+        scrP.setBorder(null);
+
         logTA.setEditable(false);
         logTA.setColumns(20);
         logTA.setRows(5);
+        logTA.setText("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         logTA.setFocusable(false);
         logTA.setOpaque(false);
-        jScrollPane1.setViewportView(logTA);
+        scrP.setViewportView(logTA);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(scrP, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                    .addComponent(InputTF))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(scrP, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(InputTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(InputTF, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,22 +134,21 @@ public class ChatFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        bg.setBounds(0, 0, 1280, 720);
+        bg.setBounds(0, 0, 720, 405);
         bg.setIcon(BG);
 //        logTA.setBounds(25, 25, 640, 360);
-//        logTA.setBackground(c);
 //        logTA.setFocusable(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ChatFrame().setVisible(true);
-                
             }
+            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField InputTF;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea logTA;
+    private javax.swing.JScrollPane scrP;
     // End of variables declaration//GEN-END:variables
 }
