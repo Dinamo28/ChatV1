@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 public class Chat extends javax.swing.JFrame {
 
@@ -22,17 +23,8 @@ public class Chat extends javax.swing.JFrame {
         this.add(bG);
         scrPane.setBackground(c);
         scrPane.setForeground(c);
-//        JScrollPane scrPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-//                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-//        scrPane.setBounds(10, 10, 700, 340);
-////scrPane .getViewport().add( lab_test);
-//        scrPane.add(logLabel);
-//        scrPane.setVisible(true);
         inputTF.setBounds(10, 360, 700,30);
-//        logLabel.setVisible(true);
-//        this.add(scrPane);
-        scrPane.setAutoscrolls(true);
-//        scrPane.se
+        scrPane.setAutoscrolls(false);
         inputTF.setVisible(true);
         this.add(inputTF);
 
