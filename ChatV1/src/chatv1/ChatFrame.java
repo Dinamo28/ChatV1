@@ -46,11 +46,14 @@ public class ChatFrame extends javax.swing.JFrame {
         logTA.setBackground(c);
         logTA.setOpaque(true);
         logTA.setAutoscrolls(true);
-        scrP.setBorder(null);
+        scrP.getViewport().setOpaque(false);
+        scrP.setOpaque(false);
+        //scrP.setBorder(null);
         bg.setIcon(BG);
         this.add(bg);
-        repaint();
         scrP.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+        repaint();
+        
     }
 
     public void setCliente(Cliente1 cliente) {

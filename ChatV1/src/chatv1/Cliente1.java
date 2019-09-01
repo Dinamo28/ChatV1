@@ -101,6 +101,7 @@ public class Cliente1 {
             cliente1.RecibirDatos();
 
         } catch (Exception e) {
+            System.out.println("no funco");
         }
     }
 
