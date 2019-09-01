@@ -41,6 +41,8 @@ public class ChatFrame extends javax.swing.JFrame {
     public ChatFrame() {
 
         initComponents();
+        bg.setBounds(0, 0, 720, 405);
+        bg.setIcon(BG);
         logTA.setBackground(c);
         logTA.setOpaque(true);
         logTA.setAutoscrolls(true);
@@ -55,8 +57,8 @@ public class ChatFrame extends javax.swing.JFrame {
         this.cliente = cliente;
     }
 
-    public void MensajeEntrante(String msg, String nombre) {
-        log += "<" + nombre + "> " + msg + "\n";
+    public void MensajeEntrante(String msg) {
+        log +=msg + "\n";
         logTA.setText(log);
         InputTF.setText("");
         repaint();
@@ -123,8 +125,12 @@ public class ChatFrame extends javax.swing.JFrame {
 
     private void InputTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputTFActionPerformed
         if (InputTF.getText().length() > 0) {
-            MensajeEntrante(InputTF.getText(), cliente.nombre);
             cliente.EnviarDatos(InputTF.getText());
+            log += "<"+cliente.nombre+"> "+InputTF.getText() + "\n";
+            logTA.setText(log);
+            InputTF.setText("");
+            repaint();
+
         }
     }//GEN-LAST:event_InputTFActionPerformed
 
@@ -164,9 +170,6 @@ public class ChatFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        bg.setBounds(0, 0, 720, 405);
-        bg.setIcon(BG);
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ChatFrame().setVisible(true);

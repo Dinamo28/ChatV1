@@ -31,7 +31,8 @@ public class Cliente1 {
                 try {
                     while (true) {
                         String mesgIn = buffEntrada.readUTF();
-                        System.out.println(nombre + ": " + mesgIn);
+                        vChat.MensajeEntrante(mesgIn);
+                        //System.out.println(nombre + "recibir: " + mesgIn);
                     }
                 } catch (Exception e) {
                     System.out.print("Hola");
@@ -90,8 +91,10 @@ public class Cliente1 {
             buffSalida = new DataOutputStream(cliente.getOutputStream());
             buffEntrada = new DataInputStream(cliente.getInputStream());
             teclado = new DataInputStream(System.in);
+            
             System.out.println("Elige un nombre:");
             String nombre = sc.nextLine();
+            
             Cliente1 cliente1 = new Cliente1(cliente, buffSalida, buffEntrada, teclado, nombre);
             vChat.setCliente(cliente1);
             cliente1.setVentana(vChat);
