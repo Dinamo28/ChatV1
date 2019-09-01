@@ -27,17 +27,19 @@ import javax.swing.JViewport;
  */
 public class ChatFrame extends javax.swing.JFrame {
 
+    Cliente1 cliente;
+
     static String log = "";
     static Random rng = new Random();
-    static ImageIcon BG = new ImageIcon("resources\\chat"+rng.nextInt(10)+".jpg");
+    static ImageIcon BG = new ImageIcon("resources\\chat" + rng.nextInt(10) + ".jpg");
 //    static Color b = new Color(0f, 0f, 0f, 0f);
-    static Color c = new Color(1f, 1f, 1f,.4f);
-    
+    static Color c = new Color(1f, 1f, 1f, .2f);
+
 //    static JTextArea logTA = new JTextArea();
     static JLabel bg = new JLabel();
-    
+
     public ChatFrame() {
-        
+
         initComponents();
         logTA.setBackground(c);
         logTA.setOpaque(true);
@@ -47,6 +49,17 @@ public class ChatFrame extends javax.swing.JFrame {
         this.add(bg);
         repaint();
         scrP.getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
+    }
+
+    public void setCliente(Cliente1 cliente) {
+        this.cliente = cliente;
+    }
+
+    public void MensajeEntrante(String msg, String nombre) {
+        log += "<" + nombre + "> " + msg + "\n";
+        logTA.setText(log);
+        InputTF.setText("");
+        repaint();
     }
 
     /**
@@ -109,19 +122,14 @@ public class ChatFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InputTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputTFActionPerformed
-        if (InputTF.getText().length()>0) {
-            log += "<USER> " + InputTF.getText() + "\n";
-            logTA.setText(log);
-            InputTF.setText("");
-            this.repaint();
-            repaint();
-            scrP.repaint();
+        if (InputTF.getText().length() > 0) {
+            MensajeEntrante(InputTF.getText(), cliente.nombre);
+            cliente.EnviarDatos(InputTF.getText());
         }
     }//GEN-LAST:event_InputTFActionPerformed
 
     private void scrPMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_scrPMouseWheelMoved
         // TODO add your handling code here:
-        repaint();
     }//GEN-LAST:event_scrPMouseWheelMoved
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -158,13 +166,13 @@ public class ChatFrame extends javax.swing.JFrame {
         /* Create and display the form */
         bg.setBounds(0, 0, 720, 405);
         bg.setIcon(BG);
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ChatFrame().setVisible(true);
-                
+
             }
-            
+
         });
     }
 
