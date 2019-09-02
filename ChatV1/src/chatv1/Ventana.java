@@ -6,7 +6,7 @@ public class Ventana extends javax.swing.JFrame {
     public Ventana() {
         initComponents();
         setResizable(false);
-        setSize(676,469);
+        setSize(710,600);
         userLabel.setVisible(false);
         userTF.setVisible(false);
         AliasTF.setVisible(false);
@@ -16,12 +16,15 @@ public class Ventana extends javax.swing.JFrame {
         RegisterB.setVisible(false);
         aliasLabel.setVisible(false);
         confPassField.setVisible(false);
+        IPLabel.setVisible(false);
+        IPTF.setVisible(false);
         
         userLOG.setVisible(false);
         TFuserLOG.setVisible(false);
         passLOG.setVisible(false);
         passField1.setVisible(false);
         LogInB.setVisible(false);
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -45,6 +48,8 @@ public class Ventana extends javax.swing.JFrame {
         passField = new javax.swing.JPasswordField();
         passField1 = new javax.swing.JPasswordField();
         confPassField = new javax.swing.JPasswordField();
+        IPLabel = new javax.swing.JLabel();
+        IPTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -72,7 +77,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RegisterB);
-        RegisterB.setBounds(260, 320, 110, 40);
+        RegisterB.setBounds(270, 440, 110, 40);
 
         confLabel.setText("Confirm Password");
         getContentPane().add(confLabel);
@@ -92,7 +97,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBregister);
-        RBregister.setBounds(120, 400, 120, 30);
+        RBregister.setBounds(130, 530, 120, 30);
 
         buttonGroup1.add(RBlogin);
         RBlogin.setText("Log In");
@@ -102,7 +107,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBlogin);
-        RBlogin.setBounds(410, 400, 100, 30);
+        RBlogin.setBounds(420, 530, 100, 30);
 
         userLOG.setText("Username");
         getContentPane().add(userLOG);
@@ -146,6 +151,12 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(confPassField);
         confPassField.setBounds(220, 250, 190, 30);
 
+        IPLabel.setText("IP:");
+        getContentPane().add(IPLabel);
+        IPLabel.setBounds(270, 300, 70, 20);
+        getContentPane().add(IPTF);
+        IPTF.setBounds(220, 330, 190, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,15 +171,18 @@ public class Ventana extends javax.swing.JFrame {
         }
     }
     private void RegisterBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBActionPerformed
-        String password = passField.getText();;
+        String password = passField.getText();
         String confPass = confPassField.getText();
         String usuario = userTF.getText();
         String alias = AliasTF.getText();
+        String ip = IPTF.getText();
         if((password.equals(confPass)) && (!confPass.equals("") && !usuario.equals("") && !alias.equals("") && !password.equals(""))){
-            //JOptionPane.showMessageDialog(null, "Register succeed!", "Registered.", JOptionPane.INFORMATION_MESSAGE);
             NewClass.guardarArchivosTxT(usuario, alias, password);
-            ChatFrame cf = new ChatFrame();
-            cf.setVisible(true);
+            Cliente1.flag=false;
+            if (IPTF.getText().equalsIgnoreCase("default") || IPTF.getText().length()<1 ) {
+                Cliente1.ip="127.0.0.1";
+            }else Cliente1.ip=IPTF.getText();
+            Cliente1.nombre=usuario;
             close();
             
         }else{
@@ -186,6 +200,8 @@ public class Ventana extends javax.swing.JFrame {
         RegisterB.setVisible(true);
         aliasLabel.setVisible(true);
         confPassField.setVisible(true);
+        IPTF.setVisible(true);
+        IPLabel.setVisible(true);
         
         userLOG.setVisible(false);
         TFuserLOG.setVisible(false);
@@ -219,11 +235,14 @@ public class Ventana extends javax.swing.JFrame {
         String user = TFuserLOG.getText();
         String pass = passField1.getText();
         NewClass a = new NewClass();
-        boolean verificar = a.leerCorreoYContraseña(pass, user);
+        boolean verificar = a.leerusernameYContraseña(pass, user);
         if (verificar == true) {
             JOptionPane.showMessageDialog(null, "Loggin in succeeded!");
-            ChatFrame cf = new ChatFrame();
-            cf.setVisible(true);
+            Cliente1.flag=false;
+            if (IPTF.getText().equalsIgnoreCase("default") || IPTF.getText().length()<1 ) {
+                Cliente1.ip="127.0.0.1";
+            }else Cliente1.ip=IPTF.getText();
+            Cliente1.nombre=user;
             close();
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong, try again ");
@@ -279,6 +298,8 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField AliasTF;
+    private javax.swing.JLabel IPLabel;
+    private javax.swing.JTextField IPTF;
     private javax.swing.JButton LogInB;
     private javax.swing.JRadioButton RBlogin;
     private javax.swing.JRadioButton RBregister;

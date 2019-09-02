@@ -33,7 +33,7 @@ public class ChatFrame extends javax.swing.JFrame {
     static Random rng = new Random();
     static ImageIcon BG = new ImageIcon("resources\\chat" + rng.nextInt(10) + ".jpg");
 //    static Color b = new Color(0f, 0f, 0f, 0f);
-    static Color c = new Color(1f, 1f, 1f, .2f);
+    static Color c = new Color(1f, 1f, 1f, .4f);
 
 //    static JTextArea logTA = new JTextArea();
     static JLabel bg = new JLabel();
@@ -63,7 +63,6 @@ public class ChatFrame extends javax.swing.JFrame {
     public void MensajeEntrante(String msg) {
         log +=msg + "\n";
         logTA.setText(log);
-        InputTF.setText("");
         repaint();
     }
 
@@ -142,7 +141,7 @@ public class ChatFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_scrPMouseWheelMoved
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
+        NewClass.Log(log);
     }//GEN-LAST:event_formWindowClosed
 
     /**

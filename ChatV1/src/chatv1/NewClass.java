@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
 public class NewClass {
@@ -16,7 +17,6 @@ public class NewClass {
             String ruta = "C:\\Users\\Public\\usuarios.txt";
             String contenido = alias + "\n" + username + "\n" + contraseña;
             Archivo = new File(ruta);
-            // Si el archivo no existe es creado
             if (!Archivo.exists()) {
                 Archivo.createNewFile();
             }
@@ -30,51 +30,61 @@ public class NewClass {
             JOptionPane.showMessageDialog(null, "There was an error, try again :(");
         }
     }
-    public void leerArchivo() {
-        String correo = "";
-        String contraseña = "";
+    public static void Log(String log){
+        File archivo;
+        FileWriter fw;
+        PrintWriter linea;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Public\\usuarios.txt"));
-            String temp1 = "";
-            String temp2 = "";
-            String cadena;
-            int i = 1;
-            while ((cadena = br.readLine()) != null) {
-                if (i%5 == 0) {
-                    temp1 = temp1 + cadena + "\n";
-                }
-                i = i+1;
-                if (i%6 == 0) {
-                    temp2 = temp2 + cadena + "\n";
-                }
-                if (i == 7) {
-                    i = 1;
-                }
-            }           
-            correo = temp1;
-            contraseña = temp2;
+            LocalDateTime myObj = LocalDateTime.now();
+            String ruta = "C:\\Users\\Public\\" +myObj+".txt";
+            String contenido = log;
+            archivo = new File(ruta);
+            if (!archivo.exists()) {
+                archivo.createNewFile();
+            }
+            fw = new FileWriter(archivo, true);
+            linea = new PrintWriter(fw);
+            linea.println(contenido);
+            linea.close();
+            fw.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "no shavo no se pudo");
+
         }
     }
-    public boolean leerCorreoYContraseña(String contraseña, String username) {
+    public static String getAlias(){
+        String tempalias = "";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Public\\usuarios.txt"));
+            int i = 1;
+            String cadena;
+            while ((cadena = br.readLine()) != null) {
+                if (i%1 == 0) {
+                    tempalias = cadena;
+                }
+            }
+        }catch(Exception e){
+
+        }
+        return tempalias;
+    }
+    public boolean leerusernameYContraseña(String contraseña, String username) {
         boolean resultado = false;
         try {
             BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Public\\usuarios.txt"));
-            String tempcorreo = "";
+            String tempuser = "";
             String tempcontraseña = "";
             String cadena;
             int i = 1;
             while ((cadena = br.readLine()) != null) {
                 if (i%2 == 0) {
-                    tempcorreo = cadena;
+                    tempuser = cadena;
                 }
                 if (i%3 == 0) {
                     tempcontraseña = cadena;
                 }
                 i = i+1;
                 if (i == 4) {
-                    if (username.equals(tempcorreo) && contraseña.equals(tempcontraseña)) {
+                    if (username.equals(tempuser) && contraseña.equals(tempcontraseña)) {
                         resultado = true;
                         break;
                     }
