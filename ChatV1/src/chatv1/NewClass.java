@@ -51,21 +51,38 @@ public class NewClass {
 
         }
     }
-    public static String getAlias(){
-        String tempalias = "";
-        try{
+    static public String obtenerAlias(String contraseña, String username){
+        String alias = "";
+        try {
             BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Public\\usuarios.txt"));
-            int i = 1;
+            String tempcorreo = "";
+            String tempcontraseña = "";
             String cadena;
+            int i = 1;
             while ((cadena = br.readLine()) != null) {
-                if (i%1 == 0) {
-                    tempalias = cadena;
+                if (i==1) {
+                    alias = cadena;
+                }
+                if (i%2 == 0) {
+                    tempcorreo = cadena;
+                }
+                if (i%3 == 0) {
+                    tempcontraseña = cadena;
+                }
+                i = i+1;
+                if (i == 4) {
+                    if (username.equals(tempcorreo) && contraseña.equals(tempcontraseña)) {
+                        
+                        break;
+                    }
+                    i = 1;
                 }
             }
-        }catch(Exception e){
-
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Something went wrong! :(");
         }
-        return tempalias;
+        System.out.println(alias);
+        return alias;
     }
     public boolean leerusernameYContraseña(String contraseña, String username) {
         boolean resultado = false;

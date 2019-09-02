@@ -31,7 +31,7 @@ public class ChatFrame extends javax.swing.JFrame {
 
     static String log = "";
     static Random rng = new Random();
-    static ImageIcon BG = new ImageIcon("resources\\chat" + rng.nextInt(10) + ".jpg");
+    static ImageIcon BG = new ImageIcon("resources\\chat" + rng.nextInt(28) + ".jpg");
 //    static Color b = new Color(0f, 0f, 0f, 0f);
     static Color c = new Color(1f, 1f, 1f, .4f);
 

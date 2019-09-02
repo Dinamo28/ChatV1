@@ -1,12 +1,25 @@
 package chatv1;
+import static chatv1.ChatFrame.bg;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.Random;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 public class Ventana extends javax.swing.JFrame {
+    
+    static Random rng = new Random();
+    static ImageIcon BG = new ImageIcon("resources\\chat" + rng.nextInt(28) + ".jpg");
+    static JLabel bg = new JLabel();
+    
     public Ventana() {
         initComponents();
         setResizable(false);
-        setSize(710,600);
+        setSize(720,405);
+        bg.setBounds(0, 0, 720, 405);
+        bg.setIcon(BG);
+        this.add(bg);
+        repaint();
         userLabel.setVisible(false);
         userTF.setVisible(false);
         AliasTF.setVisible(false);
@@ -54,9 +67,12 @@ public class Ventana extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        userLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         userLabel.setText("Username");
+        userLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        userLabel.setOpaque(true);
         getContentPane().add(userLabel);
-        userLabel.setBounds(290, 10, 110, 20);
+        userLabel.setBounds(60, 30, 70, 20);
 
         userTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,11 +80,14 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(userTF);
-        userTF.setBounds(220, 40, 187, 30);
+        userTF.setBounds(20, 50, 187, 30);
 
+        passLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         passLabel.setText("Password");
+        passLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        passLabel.setOpaque(true);
         getContentPane().add(passLabel);
-        passLabel.setBounds(290, 160, 100, 20);
+        passLabel.setBounds(60, 130, 60, 20);
 
         RegisterB.setText("Register");
         RegisterB.addActionListener(new java.awt.event.ActionListener() {
@@ -77,41 +96,56 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RegisterB);
-        RegisterB.setBounds(270, 440, 110, 40);
+        RegisterB.setBounds(40, 260, 110, 40);
 
+        confLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         confLabel.setText("Confirm Password");
+        confLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        confLabel.setOpaque(true);
         getContentPane().add(confLabel);
-        confLabel.setBounds(270, 230, 150, 20);
+        confLabel.setBounds(40, 190, 110, 20);
 
+        aliasLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         aliasLabel.setText("Alias");
+        aliasLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        aliasLabel.setOpaque(true);
         getContentPane().add(aliasLabel);
-        aliasLabel.setBounds(290, 80, 80, 20);
+        aliasLabel.setBounds(70, 80, 40, 20);
         getContentPane().add(AliasTF);
-        AliasTF.setBounds(220, 100, 187, 30);
+        AliasTF.setBounds(20, 100, 187, 30);
 
         buttonGroup1.add(RBregister);
+        RBregister.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         RBregister.setText("Register");
+        RBregister.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        RBregister.setBorderPainted(true);
         RBregister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RBregisterActionPerformed(evt);
             }
         });
         getContentPane().add(RBregister);
-        RBregister.setBounds(130, 530, 120, 30);
+        RBregister.setBounds(200, 310, 120, 30);
 
         buttonGroup1.add(RBlogin);
+        RBlogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         RBlogin.setText("Log In");
+        RBlogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        RBlogin.setBorderPainted(true);
         RBlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RBloginActionPerformed(evt);
             }
         });
         getContentPane().add(RBlogin);
-        RBlogin.setBounds(420, 530, 100, 30);
+        RBlogin.setBounds(420, 310, 100, 30);
 
+        userLOG.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         userLOG.setText("Username");
+        userLOG.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        userLOG.setOpaque(true);
         getContentPane().add(userLOG);
-        userLOG.setBounds(470, 60, 100, 20);
+        userLOG.setBounds(470, 60, 70, 20);
 
         TFuserLOG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,11 +153,14 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFuserLOG);
-        TFuserLOG.setBounds(470, 100, 190, 30);
+        TFuserLOG.setBounds(470, 80, 190, 30);
 
+        passLOG.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         passLOG.setText("Password");
+        passLOG.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        passLOG.setOpaque(true);
         getContentPane().add(passLOG);
-        passLOG.setBounds(480, 130, 90, 30);
+        passLOG.setBounds(470, 120, 60, 20);
 
         LogInB.setText("Log In");
         LogInB.addActionListener(new java.awt.event.ActionListener() {
@@ -132,14 +169,16 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(LogInB);
-        LogInB.setBounds(480, 300, 110, 40);
+        LogInB.setBounds(520, 190, 110, 40);
 
-        mainLabel.setFont(new java.awt.Font("MingLiU", 0, 18)); // NOI18N
+        mainLabel.setFont(new java.awt.Font("MingLiU", 1, 18)); // NOI18N
         mainLabel.setText("Choose an option: ");
+        mainLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        mainLabel.setOpaque(true);
         getContentPane().add(mainLabel);
-        mainLabel.setBounds(230, 130, 190, 40);
+        mainLabel.setBounds(240, 20, 190, 40);
         getContentPane().add(passField);
-        passField.setBounds(220, 190, 190, 30);
+        passField.setBounds(20, 160, 190, 30);
 
         passField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,15 +186,18 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(passField1);
-        passField1.setBounds(470, 180, 190, 30);
+        passField1.setBounds(470, 140, 190, 30);
         getContentPane().add(confPassField);
-        confPassField.setBounds(220, 250, 190, 30);
+        confPassField.setBounds(20, 210, 190, 30);
 
+        IPLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         IPLabel.setText("IP:");
+        IPLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 255), 3, true));
+        IPLabel.setOpaque(true);
         getContentPane().add(IPLabel);
-        IPLabel.setBounds(270, 300, 70, 20);
+        IPLabel.setBounds(330, 120, 30, 20);
         getContentPane().add(IPTF);
-        IPTF.setBounds(220, 330, 190, 30);
+        IPTF.setBounds(250, 140, 180, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,7 +224,7 @@ public class Ventana extends javax.swing.JFrame {
             if (IPTF.getText().equalsIgnoreCase("default") || IPTF.getText().length()<1 ) {
                 Cliente1.ip="127.0.0.1";
             }else Cliente1.ip=IPTF.getText();
-            Cliente1.nombre=usuario;
+            Cliente1.nombre=alias;
             close();
             
         }else{
@@ -218,6 +260,8 @@ public class Ventana extends javax.swing.JFrame {
         passLOG.setVisible(true);
         passField1.setVisible(true);
         LogInB.setVisible(true);
+        IPTF.setVisible(true);
+        IPLabel.setVisible(true);
         
         userLabel.setVisible(false);
         userTF.setVisible(false);
@@ -242,7 +286,7 @@ public class Ventana extends javax.swing.JFrame {
             if (IPTF.getText().equalsIgnoreCase("default") || IPTF.getText().length()<1 ) {
                 Cliente1.ip="127.0.0.1";
             }else Cliente1.ip=IPTF.getText();
-            Cliente1.nombre=user;
+            Cliente1.nombre=NewClass.obtenerAlias(pass, user);
             close();
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong, try again ");
