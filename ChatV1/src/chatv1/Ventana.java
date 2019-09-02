@@ -63,8 +63,14 @@ public class Ventana extends javax.swing.JFrame {
         confPassField = new javax.swing.JPasswordField();
         IPLabel = new javax.swing.JLabel();
         IPTF = new javax.swing.JTextField();
+        ExitB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         userLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -199,6 +205,15 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(IPTF);
         IPTF.setBounds(250, 140, 180, 30);
 
+        ExitB.setText("EXIT");
+        ExitB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitBActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ExitB);
+        ExitB.setBounds(663, 0, 60, 23);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -301,6 +316,16 @@ public class Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFuserLOGActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        //System.exit(0);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void ExitBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitBActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_ExitBActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,6 +367,7 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField AliasTF;
+    private javax.swing.JButton ExitB;
     private javax.swing.JLabel IPLabel;
     private javax.swing.JTextField IPTF;
     private javax.swing.JButton LogInB;
